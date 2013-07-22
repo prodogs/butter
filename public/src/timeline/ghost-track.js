@@ -7,8 +7,13 @@
  *
  * Creates a ghosted track that will potentially get created if an overlapping trackEvent is dropped.
  */
+ 
+ 
 define( [], function() {
+  
   function GhostTrack( lastTrack, nextTrack ) {
+    
+    
     var _this = this,
         _element = document.createElement( "div" ),
         _view;
@@ -20,15 +25,24 @@ define( [], function() {
     _this.resultantTrack = null;
 
     // Create methods to manage ghost trackEvents
+    
     _view = {
-      addTrackEventGhost: function( trackEventGhost ) {
-        trackEventGhost.track = _this;
-        _element.appendChild( trackEventGhost.element );
-      },
-      removeTrackEventGhost: function( trackEventGhost ) {
-        trackEventGhost.track = null;
-        _element.removeChild( trackEventGhost.element );
-      }
+      
+      addTrackEventGhost: function( trackEventGhost )
+          {
+            trackEventGhost.track = _this;
+            _element.appendChild( trackEventGhost.element );
+          },
+          
+          
+      removeTrackEventGhost: function( trackEventGhost ) 
+          {
+          trackEventGhost.track = null;
+          _element.removeChild( trackEventGhost.element );
+          }
+      
+      
+      
     };
 
     Object.defineProperties( _view, {
@@ -62,39 +76,50 @@ define( [], function() {
        *
        * Reference to the bottom most track inside the track-container
        */
-      lastTrack: {
-        enumerable: true,
-        get: function() {
-          return lastTrack;
-        }
+            lastTrack: {
+                  enumerable: true,
+                  get: function() {
+                      return lastTrack;
+            }
       },
       /*
        * Property: nextTrack
        *
        * The track that is below this track inside the track-container
        */
+       
+       
       nextTrack : {
         enumerable: true,
         get: function() {
           return nextTrack;
         }
       },
+      
+      
       /*
        * Property: view
        *
        * A reference to the view object that was generated for this track
        */
+       
+       
       view: {
+        
         enumerable: true,
+        
         get: function() {
           return _view;
         }
+        
       },
+      
       /*
        * Property: isGhost
        *
        * Specifies whether this track is a ghost or not.
        */
+       
       isGhost: {
         enumerable: true,
         get: function() {
@@ -106,6 +131,8 @@ define( [], function() {
        *
        * Specifies the number of trackEvents on this track which are ghosts
        */
+       
+       
       numGhostTrackEvents: {
         enumerable: true,
         get: function() {
